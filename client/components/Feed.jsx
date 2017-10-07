@@ -1,5 +1,5 @@
 import React from 'react';
-import Item from './Item.jsx';
+import Article from './Article.jsx';
 import MoreButton from './MoreButton.jsx';
 
 import '../styles/Feed.scss';
@@ -8,7 +8,7 @@ const Feed = ({ items, followClick }) => {
   if (items === undefined) {
     return (
       <div className="scroll-container">
-        <Item />
+        <Article />
         <MoreButton />
       </div>
     );
@@ -16,7 +16,7 @@ const Feed = ({ items, followClick }) => {
   return (
     <div className="scroll-container">
     {items.map(item =>
-      <Item key={item.id}
+      <Article key={item.id}
         {...item}
         onClick={() => followClick(item.id)}
       />

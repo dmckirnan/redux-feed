@@ -1,8 +1,8 @@
 import React from 'react';
 
-import '../styles/Info.scss';
+import '../styles/ArticleButtons.scss';
 
-const Info = () => (
+const ArticleButtons = () => (
   <div>
     <span>
       <button type="button" className="icon-white button like-button"><span>Like</span></button>
@@ -17,4 +17,4 @@ const Info = () => (
   </div>
 );
 
-export default Info;
+export default ArticleButtons;

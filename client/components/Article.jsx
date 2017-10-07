@@ -1,9 +1,9 @@
 import React from 'react';
-import Info from './Info.jsx';
+import ArticleButtons from './ArticleButtons.jsx';
 
 import '../styles/Feed.scss';
 
-const Item = ({ followClick }) => (
+const Article = ({ followClick }) => (
   <article className="article">
     <a href="#" className="title-link">
       <h1 className="article-title">
@@ -28,8 +28,8 @@ const Item = ({ followClick }) => (
     <div className="article-topics">
       <a href="#" className="article-topic-tag">General Health</a>
     </div>
-    <Info />
+    <ArticleButtons />
   </article>
 );
 
-export default Item;
+export default Article;
