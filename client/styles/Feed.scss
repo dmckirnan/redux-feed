@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.scroll-container {
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 3.5em;
+  max-width: 45em;
+  width: 100%;
+}
+
+.article {
+  -ms-flex-direction: column;
+  -ms-flex-pack: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  background-color: #fff;
+  color: #40383a;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.62;
+  margin-bottom: 15px;
+  max-width: 45em;
+  overflow: hidden;
+  padding: 1.875em 1.875em 15px;
+  width: 100%;
+  border: 1px solid rgba(64,56,58,.1);
+}
+
+.title-link {
+  -ms-flex-wrap: wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: inline;
+  flex-wrap: wrap;
+  font-family: Montserrat,Helvetica,Arial,sans-serif;
+}
+
+.article-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 36px;
+  margin-bottom: 15px;
+  word-wrap: break-word;
+}
+
+.source-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.article-link {
+  -ms-flex-wrap: wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: inline;
+  flex-wrap: wrap;
+  font-family: Montserrat,Helvetica,Arial,sans-serif;
+}
+
+.article-link img {
+  width: 100%;
+  margin-bottom: 15px;
+  height: 18.25em;
+  object-fit: cover;
+}
+
+.article-summary {
+  font-family: Crimson Text, Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+  font-size: 1.313em;
+  line-height: 1.43;
+  margin-bottom: 15px;
+}
+
+.article-topics {
+  -ms-flex-wrap: wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.article-topic-tag {
+  background-color: transparent;
+  border: .5px solid rgba(64,56,58,.5);
+  border-radius: 4px;
+  color: #40383a;
+  font-size: 9px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  margin-top: .5em;
+  max-width: 330px;
+  overflow: hidden;
+  padding: .688em 1em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.article-topic-tag:hover {
+  color: rgba(64,56,58,.7);
+  cursor: pointer;
+  text-decoration: none;
+}

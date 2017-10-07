@@ -1,11 +1,15 @@
 import React from 'react';
 import Item from './Item.jsx';
+import MoreButton from './MoreButton.jsx';
+
+import '../styles/Feed.scss';
 
 const Feed = ({ items, followClick }) => {
   if (items === undefined) {
     return (
-      <div>
+      <div className="scroll-container">
         <Item />
+        <MoreButton />
       </div>
     );
   }

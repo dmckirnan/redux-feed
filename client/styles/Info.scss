@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.icon-white {
+  background-color: #fff;
+  color: rgba(64,56,58,.5);
+
+  border: none;
+  cursor: pointer;
+  font-size: .688em;
+  margin-right: 19px;
+  padding: 5px 0;
+}
+
+.icon-white:before {
+  background-repeat: no-repeat;
+  content: "";
+  padding-bottom: 5px;
+  padding-right: 21px;
+}
+
+.button {
+  font-family: Montserrat,Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+.like-button:before {
+  background-image: url(https://www.medcircle.com/99ad8010c0cfed4223debcddc67a3445.svg);
+}
+
+.comment-button:before {
+  background-image: url(https://www.medcircle.com/7f32da1706d2e0ff7ea9fef00a05ef0d.svg);
+}
+
+.share-button:before {
+  background-image: url(https://www.medcircle.com/35eb8dcfb008514b2acee99c273b937c.svg);
+}
+
+.save-button:before {
+  background-image: url(https://www.medcircle.com/749244f62017561ff1e225f72882dd35.svg);
+}

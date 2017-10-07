@@ -53,6 +53,15 @@
   height: 15px;
 }
 
+.logo1 {
+  height: 1.463em;
+  margin-right: .5em;
+}
+
+.logo2 {
+  height: .813em;
+}
+
 .nav-right {
   -webkit-box-pack: end;
   justify-content: flex-end;
@@ -71,6 +80,7 @@
   font-size: 12px;
   margin-right: 2px;
   padding: 14px;
+  text-decoration: none;
 }
 
 .nav-signup {
@@ -79,4 +89,11 @@
   cursor: pointer;
   padding: .625em .875em;
   text-transform: none;
+
+  background-color: transparent;
+  color: #fff;
+  font-size: 12px;
+  margin-right: 2px;
+  letter-spacing: .5px;
+  font: 13.3333px Arial;
 }

@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.footer-container {
+  -ms-flex-align: center;
+  -ms-flex-direction: column;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  align-items: center;
+  color: rgba(64,56,58,.7);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto 15px;
+  max-width: 60em;
+  width: 100%;
+}
+
+.footer-container h3 {
+  font-family: Montserrat,Helvetica,Arial,sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: -1.38px;
+  margin-bottom: 36px;
+}
+
+h3 {
+  color: #182026;
+  margin: 0 0 10px;
+  padding: 0;
+  line-height: 0.8em;
+}
