@@ -1,7 +1,7 @@
 const dateConverter = (date) => {
-  date = date.split('-');
-  const month = date[1];
-  const day = date[2].slice(0, 2);
+  const newDate = date.split('-');
+  const month = newDate[1];
+  const day = newDate[2].slice(0, 2);
   return monthSwitch(month) + ' ' + day;
 };
 

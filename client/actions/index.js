@@ -22,8 +22,9 @@ export function fetchSuccess(articles) {
 }
 
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+const url = 'https://medcircle-coding-project.s3.amazonaws.com/api/articles.json';
 
-export function fetchArticles(url) {
+export function fetchArticles() {
   return (dispatch) => {
     dispatch(fetchLoading(true));
     fetch(proxyUrl + url, { method: 'GET', headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })

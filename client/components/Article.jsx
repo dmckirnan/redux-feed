@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import ArticleButtons from './ArticleButtons.jsx';
 import dateConverter from '../../utils/dateConverter.js';
-
 import '../styles/Feed.scss';
 
 const Article = (props) => {
@@ -45,6 +46,32 @@ const Article = (props) => {
       <ArticleButtons />
     </article>
   );
+};
+
+Article.propTypes = {
+  title: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  topics: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string,
+    }).isRequired,
+  ).isRequired,
+  summary: PropTypes.string.isRequired,
+  attribution: PropTypes.shape({
+    displayName: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+  }).isRequired,
+  media: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+      thumbnailUrl: PropTypes.string,
+      mimeType: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
 };
 
 export default Article;
