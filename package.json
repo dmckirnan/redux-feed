@@ -19,7 +19,6 @@
     "url": "git+https://github.com/dmckirnan/redux-feed.git"
   },
   "dependencies": {
-    "axios": "^0.16.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -27,7 +26,6 @@
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
-    "cors": "^2.8.4",
     "css-loader": "^0.28.7",
     "es6-promise": "^4.1.1",
     "express": "^4.16.1",
