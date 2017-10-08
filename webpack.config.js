@@ -37,6 +37,8 @@ const config = {
     historyApiFallback: true,
     inline: true,
     open: true,
+    hot: true,
+    headers: { 'Access-Control-Allow-Origin': '*' },
   },
   devtool: 'eval-source-map',
 };

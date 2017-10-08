@@ -1,10 +1,40 @@
-export const LOAD_DATA = 'LOAD_DATA';
+import fetch from 'isomorphic-fetch';
 
-const loadData = () => {
-  return dispatch => fetch('https://medcircle-coding-project.s3.amazonaws.com/api/articles.json')
-    .then(res => res.json)
-    .then(
-      data => dispatch({ type: 'LOAD_DATA_SUCCESS', data }),
-      err => dispatch({ type: 'LOAD_DATA_FAILURE', err }),
-    );
-};
+export function fetchError(bool) {
+  return {
+    type: 'FETCH_ERROR',
+    hasErrored: bool,
+  };
+}
+
+export function fetchLoading(bool) {
+  return {
+    type: 'FETCH_LOADING',
+    isLoading: bool,
+  };
+}
+
+export function fetchSuccess(articles) {
+  return {
+    type: 'FETCH_SUCCESS',
+    articles,
+  };
+}
+
+export function fetchArticles(url) {
+  return (dispatch) => {
+    dispatch(fetchLoading(true));
+    fetch(url)
+      .then((response) => {
+        console.log(response, 'res');
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        dispatch(fetchLoading(false));
+        return response;
+      })
+      .then((response) => response.json())
+      .then((articles) => dispatch(fetchSuccess(articles)))
+      .catch(() => dispatch(fetchError(true)));
+  };
+}

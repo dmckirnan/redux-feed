@@ -6,5 +6,5 @@ const app = express();
 app.use('/static', express.static(path.join(__dirname, '..', 'build')));
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, '..', 'build/index.html')));
 
-const server = app.listen(7000, () => console.log('Live on 5000'));
+const server = app.listen(8080, () => console.log('Live on 8080'));
 module.exports = server;

@@ -2,6 +2,7 @@ import React from 'react';
 
 import '../styles/Footer.scss';
 
+/* eslint-disable jsx-a11y/anchor-has-content */
 const Footer = () => (
   <div className="footer">
     <div className="footer-links">

@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import items from './items';
+import { articles, fetchLoading, fetchError } from './fetchReducer';
 
-const feedApp = combineReducers({
-  items,
+const rootReducer = combineReducers({
+  articles,
+  fetchLoading,
+  fetchError,
 });
 
-export default feedApp;
+export default rootReducer;
