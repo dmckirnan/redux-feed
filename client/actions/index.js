@@ -21,12 +21,13 @@ export function fetchSuccess(articles) {
   };
 }
 
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+
 export function fetchArticles(url) {
   return (dispatch) => {
     dispatch(fetchLoading(true));
-    fetch(url)
+    fetch(proxyUrl + url, { method: 'GET', headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
       .then((response) => {
-        console.log(response, 'res');
         if (!response.ok) {
           throw Error(response.statusText);
         }
@@ -34,7 +35,7 @@ export function fetchArticles(url) {
         return response;
       })
       .then((response) => response.json())
-      .then((articles) => dispatch(fetchSuccess(articles)))
+      .then((articles) => dispatch(fetchSuccess(articles.data)))
       .catch(() => dispatch(fetchError(true)));
   };
 }

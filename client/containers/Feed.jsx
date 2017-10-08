@@ -11,52 +11,46 @@ class Feed extends Component {
     this.props.fetchData('https://medcircle-coding-project.s3.amazonaws.com/api/articles.json');
   }
 
-  renderArticles(article) {
-    const title = article.title;
-    const summary = article.summary;
-    const url = article.url;
-    const topics = article.topics;
-    const likesCount = article.likesCount;
-    const media = article.media;
-    const attribution = article.attribution;
-
-    return (
-      <Article
-        key={title}
-        title={title}
-        summary={summary}
-        url={url}
-        topics={topics}
-        likesCount={likesCount}
-        media={media}
-        attribution={attribution}
-      />
-    );
-  }
-
   render() {
-    console.log(this.props);
     if (this.props.hasErrored) {
       return (
         <div className="scroll-container">
           <p>Sorry! There was an error loading the items</p>
         </div>
-      )
+      );
     }
-
     if (this.props.isLoading) {
       return (
         <div className="scroll-container">
           <p>Loading…</p>;
         </div>
-      )
+      );
     }
+
+    const articles = this.props.articles;
+    const articlesArr = [];
+    
+    for (let i = 0; i < articles.length; i += 1) {
+      console.log(articles[i], 'articles');
+      articlesArr.push(
+        <Article
+          key={i}
+          createdAt={articles[i].createdAt}
+          title={articles[i].title}
+          summary={articles[i].summary}
+          url={articles[i].url}
+          topics={articles[i].topics}
+          likesCount={articles[i].likesCount}
+          media={articles[i].media}
+          attribution={articles[i].attribution}
+        />,
+      );
+    }
+
 
     return (
       <div className="scroll-container">
-        {this.props.articles.map((item) => {
-          this.renderArticles(item);
-        })}
+        {articlesArr}
         <MoreButton />
       </div>
     );
@@ -87,31 +81,14 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(Feed);
 
 
-// const Feed = ({ articles }) => {
-//   if (articles === undefined) {
-//     return (
-//       <div className="scroll-container">
-//         <Article />
-//         <MoreButton />
-//       </div>
-//     );
-//   }
-//   return (
-//     <div className="scroll-container">
-//       {articles.map((article, i) => (
-//         <Article key={i}
-//           title={article[i].title}
-//           summary={article[i].summary}
-//           url={article[i].url}
-//           topics={article[i].topics}
-//           likesCount={article[i].likesCount}
-//           media={article[i].media}
-//           attribution={article[i].attribution}
-//         />
-//       ))}
-//       <MoreButton />
-//     </div>
-//   );
-// };
-
-// export default Feed;
+// {this.props.articles.map((article, i) => {
+//   <Article key={i}
+//     title={article.title}
+//     summary={article.summary}
+//     url={article.url}
+//     topics={article.topics}
+//     likesCount={article.likesCount}
+//     media={article.media}
+//     attribution={article.attribution}
+//   />
+// })}

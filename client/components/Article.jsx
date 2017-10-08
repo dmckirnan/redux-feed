@@ -1,35 +1,50 @@
 import React from 'react';
 import ArticleButtons from './ArticleButtons.jsx';
+import dateConverter from '../../utils/dateConverter.js';
 
 import '../styles/Feed.scss';
 
-const Article = ({ followClick }) => (
-  <article className="article">
-    <a href="#" className="title-link">
-      <h1 className="article-title">
-        Test Title
-      </h1>
-    </a>
-    <div className="source-container">
-      <div>
-        <p className="article-source-name">Test Name</p>
-        <p className="article-source-data">9/12/17</p>
+const Article = (props) => {
+  const topics = props.topics;
+  const topicsArr = [];
+  for (let i = 0; i < topics.length; i += 1) {
+    topicsArr.push(<a href="#" className="article-topic-tag">{topics[i].name}</a>);
+  }
+
+  const media = props.media;
+  let imgUrl = '';
+  for (let i = 0; i < media.length; i += 1) {
+    imgUrl = media[i].url;
+  }
+
+  return (
+    <article className="article">
+      <a href="#" className="title-link">
+        <h1 className="article-title">
+          {props.title}
+        </h1>
+      </a>
+      <div className="source-container">
+        <div>
+          <p className="article-source-name">{props.attribution.displayName}</p>
+          <p className="article-source-data">{dateConverter(props.createdAt)}</p>
+        </div>
       </div>
-    </div>
-    <a href="#" className="article-link">
-      <img
-        src="https://d112vpovu2xa8r.cloudfront.net/portal_medcircle_curatasite_com/media/vazFSPTqqQxh35E.jpeg"
-        alt="article"
-      />
-    </a>
-    <p className="article-summary">
-      The study suggests that the liver deals with fat differently on a high-sugar diet than it does on a low-sugar diet.
-    </p>
-    <div className="article-topics">
-      <a href="#" className="article-topic-tag">General Health</a>
-    </div>
-    <ArticleButtons />
-  </article>
-);
+      <a href="#" className="article-link">
+        <img
+          src={imgUrl}
+          alt="article"
+        />
+      </a>
+      <p className="article-summary">
+        {props.summary}
+      </p>
+      <div className="article-topics">
+        {topicsArr}
+      </div>
+      <ArticleButtons />
+    </article>
+  );
+};
 
 export default Article;
