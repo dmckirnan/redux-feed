@@ -1,22 +1,22 @@
 import fetch from 'isomorphic-fetch';
 
-export function fetchError(bool) {
+export function articleFetchError(bool) {
   return {
-    type: 'FETCH_ERROR',
+    type: 'ARTICLE_FETCH_ERROR',
     hasErrored: bool,
   };
 }
 
-export function fetchLoading(bool) {
+export function articleFetchLoading(bool) {
   return {
-    type: 'FETCH_LOADING',
+    type: 'ARTICLE_FETCH_LOADING',
     isLoading: bool,
   };
 }
 
-export function fetchSuccess(articles) {
+export function articleFetchSuccess(articles) {
   return {
-    type: 'FETCH_SUCCESS',
+    type: 'ARTICLE_FETCH_SUCCESS',
     articles,
   };
 }
@@ -26,17 +26,17 @@ const url = 'https://medcircle-coding-project.s3.amazonaws.com/api/articles.json
 
 export function fetchArticles() {
   return (dispatch) => {
-    dispatch(fetchLoading(true));
+    dispatch(articleFetchLoading(true));
     fetch(proxyUrl + url, { method: 'GET', headers: { Accept: 'application/json', 'Content-Type': 'application/json' } })
       .then((response) => {
         if (!response.ok) {
           throw Error(response.statusText);
         }
-        dispatch(fetchLoading(false));
+        dispatch(articleFetchLoading(false));
         return response;
       })
-      .then((response) => response.json())
-      .then((articles) => dispatch(fetchSuccess(articles.data)))
-      .catch(() => dispatch(fetchError(true)));
+      .then(response => response.json())
+      .then(articles => dispatch(articleFetchSuccess(articles.data)))
+      .catch(() => dispatch(articleFetchError(true)));
   };
 }

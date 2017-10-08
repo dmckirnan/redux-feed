@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
-import { articles, fetchLoading, fetchError } from './fetchReducer';
+import { articles, articleFetchLoading, articleFetchError } from './articlesReducer';
+import { topics, topicFetchLoading, topicFetchError } from './topicsReducer';
 
 const rootReducer = combineReducers({
   articles,
-  fetchLoading,
-  fetchError,
+  articleFetchLoading,
+  articleFetchError,
+  topics,
+  topicFetchLoading,
+  topicFetchError,
 });
 
 export default rootReducer;

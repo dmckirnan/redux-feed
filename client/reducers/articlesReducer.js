@@ -1,15 +1,15 @@
-export function fetchError(state = false, action) {
+export function articleFetchError(state = false, action) {
   switch (action.type) {
-    case 'FETCH_ERROR':
+    case 'ARTICLE_FETCH_ERROR':
       return action.hasErrored;
     default:
       return state;
   }
 }
 
-export function fetchLoading(state = false, action) {
+export function articleFetchLoading(state = false, action) {
   switch (action.type) {
-    case 'FETCH_LOADING':
+    case 'ARTICLE_FETCH_LOADING':
       return action.isLoading;
     default:
       return state;
@@ -18,7 +18,7 @@ export function fetchLoading(state = false, action) {
 
 export function articles(state = [], action) {
   switch (action.type) {
-    case 'FETCH_SUCCESS':
+    case 'ARTICLE_FETCH_SUCCESS':
       return action.articles;
     default:
       return state;

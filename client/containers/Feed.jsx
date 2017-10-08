@@ -53,8 +53,8 @@ const Feed = (props) => {
 const mapStateToProps = (state) => {
   return {
     articles: state.articles,
-    hasErrored: state.fetchError,
-    isLoading: state.fetchLoading,
+    hasErrored: state.articleFetchError,
+    isLoading: state.articleFetchLoading,
   };
 };
 
