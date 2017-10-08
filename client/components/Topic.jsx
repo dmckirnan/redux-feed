@@ -15,7 +15,6 @@ const Topic = (props) => {
 Topic.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  description: PropTypes.string,
 };
 
 export default Topic;

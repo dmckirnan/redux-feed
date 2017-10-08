@@ -5,8 +5,9 @@ import FooterContainer from './FooterContainer.jsx';
 const Home = () => (
   <div>
     <Feed />
-    <FooterContainer />
   </div>
 );
+
+// <FooterContainer />
 
 export default Home;

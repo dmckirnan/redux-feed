@@ -3,7 +3,6 @@ import { Switch, Route } from 'react-router-dom';
 
 import Home from './Home.jsx';
 import TopicsContainer from '../containers/TopicsContainer.jsx';
-import '../styles/Main.scss';
 
 const Main = () => (
   <main>
