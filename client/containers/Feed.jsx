@@ -6,6 +6,16 @@ import Article from '../components/Article.jsx';
 import MoreButton from '../components/MoreButton.jsx';
 import '../styles/Feed.scss';
 
+const filterArticles = (topics, subs) => {
+  const newTopics = topics.slice(0);
+  let counter = 0;
+  newTopics.map((topic) => {
+    if (subs.indexOf(topic.id) !== -1) counter += 1;
+  });
+
+  return counter === 0;
+};
+
 const Feed = (props) => {
   if (props.hasErrored) {
     return (
@@ -26,19 +36,21 @@ const Feed = (props) => {
   const articlesArr = [];
 
   for (let i = 0; i < articles.length; i += 1) {
-    articlesArr.push(
-      <Article
-        key={i}
-        createdAt={articles[i].createdAt}
-        title={articles[i].title}
-        summary={articles[i].summary}
-        url={articles[i].url}
-        topics={articles[i].topics}
-        likesCount={articles[i].likesCount}
-        media={articles[i].media}
-        attribution={articles[i].attribution}
-      />,
-    );
+    if (filterArticles(articles[i].topics, props.subs)) {
+      articlesArr.push(
+        <Article
+          key={i}
+          createdAt={articles[i].createdAt}
+          title={articles[i].title}
+          summary={articles[i].summary}
+          url={articles[i].url}
+          topics={articles[i].topics}
+          likesCount={articles[i].likesCount}
+          media={articles[i].media}
+          attribution={articles[i].attribution}
+        />,
+      );
+    }
   }
 
   return (
@@ -53,6 +65,7 @@ const Feed = (props) => {
 const mapStateToProps = (state) => {
   return {
     articles: state.articles,
+    subs: state.subs,
     hasErrored: state.articleFetchError,
     isLoading: state.articleFetchLoading,
   };
@@ -89,6 +102,11 @@ Feed.propTypes = {
         displayName: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
       }).isRequired,
+    }).isRequired,
+  ).isRequired,
+  subs: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
     }).isRequired,
   ).isRequired,
   hasErrored: PropTypes.bool.isRequired,

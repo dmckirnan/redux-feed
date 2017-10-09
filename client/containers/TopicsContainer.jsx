@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 
 import Topic from '../components/Topic.jsx';
 import './../styles/Topics.scss';
-// import { addSubscription, toggleSubscription } from '../actions/subs.js';
+import { addSub, removeSub } from '../actions/subs';
+
 
 const TopicsContainer = (props) => {
-  console.log(props.topics);
   if (props.hasErrored) {
     return (
       <div className="topics-container">
@@ -27,12 +27,17 @@ const TopicsContainer = (props) => {
   const topicsArr = [];
 
   for (let i = 0; i < topics.length; i += 1) {
+    const following = props.subs.indexOf(topics[i].id) === -1;
+    console.log(props.subs);
     topicsArr.push(
       <Topic
         key={i}
         id={topics[i].id}
         name={topics[i].name}
         description={topics[i].description}
+        following={following}
+        addSub={() => props.onClickAdd(topics[i].id)}
+        removeSub={() => props.onClickRemove(topics[i].id)}
       />,
     );
   }
@@ -49,16 +54,23 @@ const TopicsContainer = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    subscriptions: state.subscriptions,
+    subs: state.subs,
     topics: state.topics,
     hasErrored: state.topicFetchError,
     isLoading: state.topicFetchLoading,
   };
 };
 
-// const mapDispatchToProps = {
-//   onClick: toggleSubscription,
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onClickAdd: (id) => {
+      dispatch(addSub(id));
+    },
+    onClickRemove: (id) => {
+      dispatch(removeSub(id));
+    },
+  };
+};
 
 TopicsContainer.propTypes = {
   isLoading: PropTypes.bool.isRequired,
@@ -70,7 +82,13 @@ TopicsContainer.propTypes = {
       description: PropTypes.string,
     }).isRequired,
   ).isRequired,
+  subs: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+    }).isRequired,
+  ).isRequired,
+  onClickAdd: PropTypes.func.isRequired,
+  onClickRemove: PropTypes.func.isRequired,
 };
 
-// export default connect(mapStateToProps, mapDispatchToProps)(TopicsContainer);
-export default connect(mapStateToProps)(TopicsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(TopicsContainer);

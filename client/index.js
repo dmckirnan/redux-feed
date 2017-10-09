@@ -11,6 +11,7 @@ import { fetchTopics } from './actions/topics';
 const store = configureStore();
 store.dispatch(fetchArticles());
 store.dispatch(fetchTopics());
+
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable no-undef */
 render(
