@@ -4,18 +4,20 @@ import { connect } from 'react-redux';
 
 import Topic from '../components/Topic.jsx';
 import './../styles/Topics.scss';
+// import { addSubscription, toggleSubscription } from '../actions/subs.js';
 
 const TopicsContainer = (props) => {
+  console.log(props.topics);
   if (props.hasErrored) {
     return (
-      <div className="topics-list-container">
-        <p>Sorry! There was an error loading the items</p>
+      <div className="topics-container">
+        <p>Sorry! There was an error loading the topics.</p>
       </div>
     );
   }
   if (props.isLoading) {
     return (
-      <div className="topics-list-container">
+      <div className="topics-container">
         <p>Loading…</p>;
       </div>
     );
@@ -47,11 +49,16 @@ const TopicsContainer = (props) => {
 
 const mapStateToProps = (state) => {
   return {
+    subscriptions: state.subscriptions,
     topics: state.topics,
     hasErrored: state.topicFetchError,
     isLoading: state.topicFetchLoading,
   };
 };
+
+// const mapDispatchToProps = {
+//   onClick: toggleSubscription,
+// };
 
 TopicsContainer.propTypes = {
   isLoading: PropTypes.bool.isRequired,
@@ -65,4 +72,5 @@ TopicsContainer.propTypes = {
   ).isRequired,
 };
 
+// export default connect(mapStateToProps, mapDispatchToProps)(TopicsContainer);
 export default connect(mapStateToProps)(TopicsContainer);

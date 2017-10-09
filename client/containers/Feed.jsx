@@ -10,7 +10,7 @@ const Feed = (props) => {
   if (props.hasErrored) {
     return (
       <div className="scroll-container">
-        <p>Sorry! There was an error loading the items</p>
+        <p>Sorry! There was an error loading the articles.</p>
       </div>
     );
   }
