@@ -6,13 +6,12 @@ import Article from '../components/Article.jsx';
 import MoreButton from '../components/MoreButton.jsx';
 import '../styles/Feed.scss';
 
+/* Helper Function to Check State.subs for currently unfollowed topics to filter out articles */
 const filterArticles = (topics, subs) => {
-  const newTopics = topics.slice(0);
   let counter = 0;
-  newTopics.map((topic) => {
+  topics.forEach((topic) => {
     if (subs.indexOf(topic.id) !== -1) counter += 1;
   });
-
   return counter === 0;
 };
 

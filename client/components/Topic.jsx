@@ -17,8 +17,11 @@ const Topic = props =>
     </div>
   );
 
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable react/require-default-props */
+
 Topic.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired, // Prop Is Used by Container Component
   name: PropTypes.string.isRequired,
   following: PropTypes.bool.isRequired,
   removeSub: PropTypes.func,

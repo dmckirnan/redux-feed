@@ -28,7 +28,6 @@ const TopicsContainer = (props) => {
 
   for (let i = 0; i < topics.length; i += 1) {
     const following = props.subs.indexOf(topics[i].id) === -1;
-    console.log(props.subs);
     topicsArr.push(
       <Topic
         key={i}

@@ -13,10 +13,7 @@ const Article = (props) => {
   }
 
   const media = props.media;
-  let imgUrl = '';
-  for (let i = 0; i < media.length; i += 1) {
-    imgUrl = media[i].url;
-  }
+  const imgUrl = media.length === 0 ? '' : media[0].url;
 
   return (
     <article className="article">
@@ -65,12 +62,12 @@ Article.propTypes = {
   }).isRequired,
   media: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      type: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
+      id: PropTypes.number,
+      type: PropTypes.string,
+      url: PropTypes.string,
       thumbnailUrl: PropTypes.string,
-      mimeType: PropTypes.string.isRequired,
-    }).isRequired,
+      mimeType: PropTypes.string,
+    }),
   ).isRequired,
 };
 
