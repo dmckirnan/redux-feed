@@ -1,32 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+$color: #40383a;
+
 .topics-container {
-  -ms-flex-align: center;
-  -ms-flex-direction: column;
-  -webkit-box-align: center;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: vertical;
-  align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  height: 800px;
+  width: 100%;
+  max-width: 45em;
+  
   display: flex;
+  align-items: center;
   flex-direction: column;
   margin: 0 auto 70px;
-  max-width: 45em;
-  width: 100%;
 }
 
 .topics-list-container {
-  padding: 15px;
+  width: 100%;
+  display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
-
   align-self: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
+  padding: 15px;
 }
 
 .topics-list {
@@ -36,60 +30,69 @@
 }
 
 .topic {
-  -ms-flex-align: center;
-  -ms-flex-pack: justify;
-  -webkit-box-align: center;
-  -webkit-box-pack: justify;
-  align-items: center;
-  border-top: 1px solid rgba(64,56,58,.1);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: space-between;
-  padding: .538em 0;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(64,56,58,.1);
+  padding: .538em 0;
 }
 
 .topic-link {
-  color: #40383a;
-  margin: 0;
+  color: $color;
   font-family: Montserrat,Helvetica,Arial,sans-serif;
   font-size: 16px;
+  margin: 0;
 }
 
 .follow-button {
   background: #fff;
-  color: #40383a;
-  cursor: pointer;
+  color: $color;
   font-size: .769rem;
+  
   height: 18px;
   padding: 0 6px;
-  border: 1px solid rgba(64,56,58,.1)
+  border: 1px solid rgba(64,56,58,.1);
+  cursor: pointer;
 }
 
 .follow-button:before {
   background-image: url(https://www.medcircle.com/941035dd3c0fc98cbdc760a8414e1d35.svg);
   background-position: 0;
   background-repeat: no-repeat;
+
   content: "";
   padding-right: 10px;
 }
 
 .following-button {
   background: #fff;
-  border: 1px solid;
-  border-radius: 4px;
   color: #b5103a;
-  cursor: pointer;
   font-size: .769rem;
+
   height: 18px;
   padding: 0 6px;
+  border: 1px solid;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .following-button:before {
   background-image: url(https://www.medcircle.com/e91d944c2ec2ad2b8496135a02588fac.svg);
   background-position: 0;
   background-repeat: no-repeat;
+
   content: "";
   padding-right: 10px;
+}
+
+/* Mobile-Friendly Media Query */
+@media all and (max-width: 660px) {
+  .topics-container {
+    width: 85%;
+  }
+
+  .topic-link {
+    max-width: 18ch;
+  }
 }

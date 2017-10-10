@@ -31,7 +31,7 @@ const Article = (props) => {
       <a href="#" className="article-link">
         <img
           src={imgUrl}
-          alt="article"
+          alt={imgUrl === '' ? '' : 'article'}
         />
       </a>
       <p className="article-summary">

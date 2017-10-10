@@ -1,50 +1,50 @@
 @import url('https://fonts.googleapis.com/css?family=Crimson+Text');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+$family-1: Montserrat,Helvetica,Arial,sans-serif;
+$family-2: Crimson Text, Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+$color: #40383a;
+
 .scroll-container {
-  -webkit-box-align: center;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: vertical;
   align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   flex-direction: column;
+
   margin: 0 auto 3.5em;
   max-width: 45em;
   width: 100%;
 }
 
 .article {
-  -ms-flex-direction: column;
-  -ms-flex-pack: center;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: vertical;
-  -webkit-box-pack: center;
-  background-color: #fff;
-  color: #40383a;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  width: 100%;
+  max-width: 45em;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  background-color: #fff;
+  color: $color;
   line-height: 1.62;
-  margin-bottom: 15px;
-  max-width: 45em;
   overflow: hidden;
+
+  margin-bottom: 15px;
   padding: 1.875em 1.875em 15px;
-  width: 100%;
   border: 1px solid rgba(64,56,58,.1);
 }
 
 .title-link {
-  -ms-flex-wrap: wrap;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  font-family: $family-1;
+  color: $color;
+
   display: flex;
   display: inline;
   flex-wrap: wrap;
-  font-family: Montserrat,Helvetica,Arial,sans-serif;
+
+  text-decoration: none;
+}
+
+.title-link:visited {
+  color: $color;
 }
 
 .article-title {
@@ -52,25 +52,21 @@
   font-weight: 700;
   letter-spacing: -1px;
   line-height: 36px;
-  margin-bottom: 15px;
   word-wrap: break-word;
+  
+  margin-bottom: 15px;
 }
 
 .source-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin-bottom: 15px;
 }
 
 .article-link {
-  -ms-flex-wrap: wrap;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   display: inline;
   flex-wrap: wrap;
-  font-family: Montserrat,Helvetica,Arial,sans-serif;
+  font-family: $family-1;
 }
 
 .article-link img {
@@ -81,16 +77,13 @@
 }
 
 .article-summary {
-  font-family: Crimson Text, Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+  font-family: $family-2;
   font-size: 1.313em;
   line-height: 1.43;
   margin-bottom: 15px;
 }
 
 .article-topics {
-  -ms-flex-wrap: wrap;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 15px;
@@ -98,26 +91,34 @@
 }
 
 .article-topic-tag {
+  max-width: 330px;
   background-color: transparent;
-  border: .5px solid rgba(64,56,58,.5);
-  border-radius: 4px;
-  color: #40383a;
+  color: $color;
   font-size: 9px;
   font-weight: 200;
   letter-spacing: 1px;
-  margin-top: .5em;
-  max-width: 330px;
-  overflow: hidden;
-  padding: .688em 1em;
   text-overflow: ellipsis;
+  overflow: hidden;
   text-transform: uppercase;
-  white-space: nowrap;
   text-decoration: none;
+  white-space: nowrap;
   -webkit-font-smoothing: antialiased;
+
+  border: .5px solid rgba(64,56,58,.5);
+  border-radius: 4px;
+  margin-top: .5em;
+  padding: .688em 1em;
 }
 
 .article-topic-tag:hover {
   color: rgba(64,56,58,.7);
   cursor: pointer;
   text-decoration: none;
+}
+
+/* Mobile-Friendly Media Query */
+@media all and (max-width: 660px) {
+  .scroll-container {
+    width: 75%;
+  }
 }

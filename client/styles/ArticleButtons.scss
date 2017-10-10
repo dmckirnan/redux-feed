@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+$font-family: Montserrat,Helvetica,Arial,sans-serif;
+
 .icon-white {
   background-color: #fff;
   color: rgba(64,56,58,.5);
+  font-size: .688em;
 
   border: none;
-  cursor: pointer;
-  font-size: .688em;
   margin-right: 19px;
   padding: 5px 0;
+  cursor: pointer;
 }
 
 .icon-white:before {
@@ -19,7 +21,7 @@
 }
 
 .button {
-  font-family: Montserrat,Helvetica,Arial,sans-serif;
+  font-family: $font-family;
   font-size: 14px;
   letter-spacing: .5px;
   text-transform: uppercase;

@@ -104,9 +104,7 @@ Feed.propTypes = {
     }).isRequired,
   ).isRequired,
   subs: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-    }).isRequired,
+    PropTypes.number,
   ).isRequired,
   hasErrored: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,

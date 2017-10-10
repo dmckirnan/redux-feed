@@ -82,9 +82,7 @@ TopicsContainer.propTypes = {
     }).isRequired,
   ).isRequired,
   subs: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-    }).isRequired,
+    PropTypes.number,
   ).isRequired,
   onClickAdd: PropTypes.func.isRequired,
   onClickRemove: PropTypes.func.isRequired,
