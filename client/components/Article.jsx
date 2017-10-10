@@ -6,26 +6,26 @@ import dateConverter from '../../utils/dateConverter.js';
 import '../styles/Feed.scss';
 
 const Article = (props) => {
-  const topics = props.topics;
+  const topics = props.topics ? props.topics : [];
   const topicsArr = [];
   for (let i = 0; i < topics.length; i += 1) {
     topicsArr.push(<a href="#" className="article-topic-tag">{topics[i].name}</a>);
   }
 
-  const media = props.media;
+  const media = props.media ? props.media : [];
   const imgUrl = media.length === 0 ? '' : media[0].url;
 
   return (
     <article className="article">
       <a href="#" className="title-link">
         <h1 className="article-title">
-          {props.title}
+          {props.title ? props.title : ''}
         </h1>
       </a>
       <div className="source-container">
         <div>
-          <p className="article-source-name">{props.attribution.displayName}</p>
-          <p className="article-source-data">{dateConverter(props.createdAt)}</p>
+          <p className="article-source-name">{props.attribution ? props.attribution.displayName : ''}</p>
+          <p className="article-source-data">{props.createdAt ? dateConverter(props.createdAt) : 'January 21st'}</p>
         </div>
       </div>
       <a href="#" className="article-link">
@@ -35,7 +35,7 @@ const Article = (props) => {
         />
       </a>
       <p className="article-summary">
-        {props.summary}
+        {props.summary ? props.summary : ''}
       </p>
       <div className="article-topics">
         {topicsArr}
@@ -58,7 +58,7 @@ Article.propTypes = {
   summary: PropTypes.string.isRequired,
   attribution: PropTypes.shape({
     displayName: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
+    type: PropTypes.string,
   }).isRequired,
   media: PropTypes.arrayOf(
     PropTypes.shape({

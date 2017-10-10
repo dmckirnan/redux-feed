@@ -34,13 +34,10 @@ describe('<Navbar />', () => {
     const wrapper = shallow(<Navbar />);
     expect(wrapper.type()).to.eql('nav');
   });
-  it('should render 4 <div>, 2 <img>, 2 <a>, 1 <button>', () => {
+  it('should render 1 <div> and 2 <Link /> Components', () => {
     const wrapper = shallow(<Navbar />);
     expect(wrapper.find(Link)).to.have.length(2);
-    expect(wrapper.find('a')).to.have.length(2);
-    expect(wrapper.find('img')).to.have.length(2);
-    expect(wrapper.find('button')).to.have.length(1);
-    expect(wrapper.find('div')).to.have.length(4);
+    expect(wrapper.find('div')).to.have.length(1);
   });
 });
 
@@ -65,15 +62,43 @@ describe('<Home />', () => {
 describe('<Article />', () => {
   it('should be an <article> element', () => {
     const wrapper = shallow(<Article />);
+
+    const title = 'hello';
+    const createdAt = '2017-04-06T01:00:01.446Z';
+    const topics = [{ id: 1, name: 'disease' }];
+    const summary = 'summary';
+    const attribution = { displayName: 'CBS' };
+    const media = [{ id: 1 }];
+
+    wrapper.setProps({ title, createdAt, topics, summary, attribution, media });
     expect(wrapper.type()).to.eql('article');
   });
   it('should render an <ArticleButtons /> component', () => {
     const wrapper = shallow(<Article />);
+
+    const title = 'hello';
+    const createdAt = '2017-04-06T01:00:01.446Z';
+    const topics = [{ id: 1, name: 'disease' }];
+    const summary = 'summary';
+    const attribution = { displayName: 'CBS' };
+    const media = [{ id: 1 }];
+
+    wrapper.setProps({ title, createdAt, topics, summary, attribution, media });
     expect(wrapper.find(ArticleButtons)).to.have.length(1);
   });
   it('should render 2 <a>, 1 <h1>, 3 <div>, 3 <p>, and 1 <img> element', () => {
     const wrapper = shallow(<Article />);
-    expect(wrapper.find('a')).to.have.length(2);
+
+    const title = 'hello';
+    const createdAt = '2017-04-06T01:00:01.446Z';
+    const topics = [{ id: 1, name: 'disease' }];
+    const summary = 'summary';
+    const attribution = { displayName: 'CBS' };
+    const media = [{ id: 1 }];
+
+    wrapper.setProps({ title, createdAt, topics, summary, attribution, media });
+
+    expect(wrapper.find('a')).to.have.length(3);
     expect(wrapper.find('h1')).to.have.length(1);
     expect(wrapper.find('div')).to.have.length(3);
     expect(wrapper.find('p')).to.have.length(3);
@@ -113,5 +138,5 @@ describe('<Topic />', () => {
     const wrapper = shallow(<Topic />);
     expect(wrapper.find('a')).to.have.length(1);
     expect(wrapper.find('button')).to.have.length(1);
-  })
-})
+  });
+});
