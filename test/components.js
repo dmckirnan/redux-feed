@@ -1,8 +1,8 @@
 import React from 'react';
-import { render } from 'enzyme';
+import { expect } from 'chai';
+import { shallow } from 'enzyme';
+import { Link } from 'react-router-dom';
 
-/* eslint-disable react/jsx-filename-extension */
-/* eslint-disable import/extensions */
 import App from '../client/components/App.jsx';
 import Navbar from '../client/components/Navbar.jsx';
 import Main from '../client/components/Main.jsx';
@@ -13,6 +13,9 @@ import MoreButton from '../client/components/MoreButton.jsx';
 import Topic from '../client/components/Topic.jsx';
 
 import Feed from '../client/containers/Feed.jsx';
+
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable import/extensions */
 
 /* eslint-disable no-undef */
 describe('<App />', () => {
@@ -31,9 +34,10 @@ describe('<Navbar />', () => {
     const wrapper = shallow(<Navbar />);
     expect(wrapper.type()).to.eql('nav');
   });
-  it('should render 4 <div>, 2 <img>, 4 <a>, 1 <button>', () => {
+  it('should render 4 <div>, 2 <img>, 2 <a>, 1 <button>', () => {
     const wrapper = shallow(<Navbar />);
-    expect(wrapper.find('a')).to.have.length(4);
+    expect(wrapper.find(Link)).to.have.length(2);
+    expect(wrapper.find('a')).to.have.length(2);
     expect(wrapper.find('img')).to.have.length(2);
     expect(wrapper.find('button')).to.have.length(1);
     expect(wrapper.find('div')).to.have.length(4);
@@ -95,7 +99,7 @@ describe('<MoreButton />', () => {
     expect(wrapper.type()).to.eql('div');
   });
   it('should render a button', () => {
-    const wrapper = shallow(<Home />);
+    const wrapper = shallow(<MoreButton />);
     expect(wrapper.find('.more-button')).to.have.length(1);
   });
 });
