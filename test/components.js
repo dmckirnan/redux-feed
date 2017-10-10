@@ -19,6 +19,10 @@ import Feed from '../client/containers/Feed.jsx';
 
 /* eslint-disable no-undef */
 describe('<App />', () => {
+  it('should be a <div> element', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.type()).to.eql('div');
+  });
   it('renders a <Navbar /> component', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find(Navbar)).to.have.length(1);
@@ -97,12 +101,28 @@ describe('<Article />', () => {
     const media = [{ id: 1 }];
 
     wrapper.setProps({ title, createdAt, topics, summary, attribution, media });
-
     expect(wrapper.find('a')).to.have.length(3);
     expect(wrapper.find('h1')).to.have.length(1);
     expect(wrapper.find('div')).to.have.length(3);
     expect(wrapper.find('p')).to.have.length(3);
     expect(wrapper.find('img')).to.have.length(1);
+  });
+  it('should render as many .article-topic-tag <a> tags as topics.length', () => {
+    const wrapper = shallow(<Article />);
+    
+    const title = 'hello';
+    const createdAt = '2017-04-06T01:00:01.446Z';
+    const topics = [{ id: 1, name: 'disease' }];
+    const summary = 'summary';
+    const attribution = { displayName: 'CBS' };
+    const media = [{ id: 1 }];
+
+    wrapper.setProps({ title, createdAt, topics, summary, attribution, media });
+    expect(wrapper.find('.article-topic-tag')).to.have.length(1);
+    const newTopics = [{ id: 1, name: 'disease' }, { id: 2, name: 'disease' }];
+    wrapper.setProps({ title, createdAt, topics: newTopics, summary, attribution, media });
+    wrapper.update();
+    expect(wrapper.find('.article-topic-tag')).to.have.length(2);
   });
 });
 
@@ -137,6 +157,14 @@ describe('<Topic />', () => {
   it('should render 1 <a> and 1 <button> element', () => {
     const wrapper = shallow(<Topic />);
     expect(wrapper.find('a')).to.have.length(1);
-    expect(wrapper.find('button')).to.have.length(1);
+    expect(wrapper.find('.follow-button')).to.have.length(1);
+  });
+  it('should render a .following button when passed props.following === true', () => {
+    const wrapper = shallow(<Topic />);
+    wrapper.find('.follow-button').simulate('click');
+    wrapper.setProps({ following: true });
+    wrapper.update();
+    expect(wrapper.find('.following-button')).to.have.length(1);
+    expect(wrapper.find('.follow-button')).to.have.length(0);
   });
 });
