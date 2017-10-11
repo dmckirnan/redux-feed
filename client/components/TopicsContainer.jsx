@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import Topic from '../components/Topic.jsx';
 import './../styles/Topics.scss';
-import { addSub, removeSub } from '../actions/subs';
 
 
 const TopicsContainer = (props) => {
@@ -51,26 +49,6 @@ const TopicsContainer = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    subs: state.subs,
-    topics: state.topics,
-    hasErrored: state.topicFetchError,
-    isLoading: state.topicFetchLoading,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onClickAdd: (id) => {
-      dispatch(addSub(id));
-    },
-    onClickRemove: (id) => {
-      dispatch(removeSub(id));
-    },
-  };
-};
-
 TopicsContainer.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   hasErrored: PropTypes.bool.isRequired,
@@ -88,4 +66,4 @@ TopicsContainer.propTypes = {
   onClickRemove: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopicsContainer);
+export default TopicsContainer;

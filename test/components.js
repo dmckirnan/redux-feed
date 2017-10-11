@@ -6,14 +6,15 @@ import { Link, Route, Switch } from 'react-router-dom';
 import App from '../client/components/App.jsx';
 import Navbar from '../client/components/Navbar.jsx';
 import Main from '../client/components/Main.jsx';
-import Home from '../client/components/Home.jsx';
+import Home from '../client/components/views/Home.jsx';
+import Topics from '../client/components/views/Topics.jsx';
 import Article from '../client/components/Article.jsx';
 import ArticleButtons from '../client/components/ArticleButtons.jsx';
 import MoreButton from '../client/components/MoreButton.jsx';
 import Topic from '../client/components/Topic.jsx';
 
 import Feed from '../client/containers/Feed.jsx';
-import dateConverter from '../utils/dateConverter';
+import TopicsFeed from '../client/containers/TopicsFeed.jsx';
 
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable import/extensions */
@@ -76,6 +77,17 @@ describe('<Home />', () => {
   it('should render a <Feed /> component', () => {
     const wrapper = shallow(<Home />);
     expect(wrapper.find(Feed)).to.have.length(1);
+  });
+});
+
+describe('<Topics />', () => {
+  it('should be a <div> element', () => {
+    const wrapper = shallow(<Topics />);
+    expect(wrapper.type()).to.eql('div');
+  });
+  it('should render a <TopicsFeed /> component', () => {
+    const wrapper = shallow(<Topics />);
+    expect(wrapper.find(TopicsFeed)).to.have.length(1);
   });
 });
 

@@ -4,7 +4,7 @@ import { createMockStore } from 'redux-test-utils';
 
 import shallowWithStore from './shallowWithStore.jsx';
 import Feed from '../client/containers/Feed.jsx';
-import TopicsContainer from '../client/containers/TopicsContainer.jsx';
+import TopicsFeed from '../client/containers/TopicsFeed.jsx';
 
 import MoreButton from '../client/components/MoreButton.jsx';
 import Article from '../client/components/Article.jsx';
@@ -150,7 +150,7 @@ describe('<Feed />', () => {
 });
 
 
-describe('<TopicsContainer />', () => {
+describe('<TopicsFeed />', () => {
   it('should be a <div> component', () => {
     const testState = {
       topics: [],
@@ -161,7 +161,7 @@ describe('<TopicsContainer />', () => {
       onClickRemove: () => console.log('bye'),
     };
     const store = createMockStore(testState);
-    const component = shallowWithStore(<TopicsContainer />, store);
+    const component = shallowWithStore(<TopicsFeed />, store);
     expect(component.dive().type()).to.eql('div');
   });
   it('should render no <Topic /> components when passed hasErrored === true', () => {
@@ -174,7 +174,7 @@ describe('<TopicsContainer />', () => {
       onClickRemove: () => console.log('bye'),
     };
     const store = createMockStore(testState);
-    const component = shallowWithStore(<TopicsContainer />, store);
+    const component = shallowWithStore(<TopicsFeed />, store);
     expect(component.dive().find(Topic)).to.have.length(0);
   });
   it('should render no <Topic /> components when passed isLoading === true', () => {
@@ -187,7 +187,7 @@ describe('<TopicsContainer />', () => {
       onClickRemove: () => console.log('bye'),
     };
     const store = createMockStore(testState);
-    const component = shallowWithStore(<TopicsContainer />, store);
+    const component = shallowWithStore(<TopicsFeed />, store);
     expect(component.dive().find(Topic)).to.have.length(0);
   });
   it('should render 1 <Topic /> component when props.topics.length === 1', () => {
@@ -200,7 +200,7 @@ describe('<TopicsContainer />', () => {
       onClickRemove: () => console.log('bye'),
     };
     const store = createMockStore(testState);
-    const component = shallowWithStore(<TopicsContainer />, store);
+    const component = shallowWithStore(<TopicsFeed />, store);
     expect(component.dive().find(Topic)).to.have.length(1);
   });
   it('should render as many <Topic /> components as testTopics data structure length', () => {
@@ -213,7 +213,7 @@ describe('<TopicsContainer />', () => {
       onClickRemove: () => console.log('bye'),
     };
     const store = createMockStore(testState);
-    const component = shallowWithStore(<TopicsContainer />, store);
+    const component = shallowWithStore(<TopicsFeed />, store);
     expect(component.dive().find(Topic)).to.have.length(3);
   });
   it('should render 1 <Topic /> with a button with a ".following-button className when topic id is not found in subs', () => {
@@ -226,7 +226,7 @@ describe('<TopicsContainer />', () => {
       onClickRemove: () => console.log('bye'),
     };
     const store = createMockStore(testState);
-    const component = shallowWithStore(<TopicsContainer />, store);
+    const component = shallowWithStore(<TopicsFeed />, store);
     expect(component.dive().find(Topic).dive().find('.following-button')).to.have.length(1);
   });
   it('should render 1 <Topic /> with a button with a ".follow-button className when topic id is found in subs', () => {
@@ -239,7 +239,7 @@ describe('<TopicsContainer />', () => {
       onClickRemove: () => console.log('bye'),
     };
     const store = createMockStore(testState);
-    const component = shallowWithStore(<TopicsContainer />, store);
+    const component = shallowWithStore(<TopicsFeed />, store);
     expect(component.dive().find(Topic).dive().find('.following-button')).to.have.length(0);
     expect(component.dive().find(Topic).dive().find('.follow-button')).to.have.length(1);
   });
