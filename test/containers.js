@@ -9,6 +9,8 @@ import TopicsFeed from '../client/containers/TopicsFeed.jsx';
 import MoreButton from '../client/components/MoreButton.jsx';
 import Article from '../client/components/Article.jsx';
 import Topic from '../client/components/Topic.jsx';
+import ArticlesContainer from '../client/components/ArticlesContainer.jsx';
+import TopicsContainer from '../client/components/TopicsContainer.jsx';
 
 import articles from '../utils/testArticles';
 import topics from '../utils/testTopics';
@@ -32,6 +34,20 @@ describe('Test shallowWithStore method', () => {
 });
 
 describe('<Feed />', () => {
+  it('should render a <ArticlesContainer /> component', () => {
+    const testState = {
+      articles: [],
+      subs: [],
+      articleFetchError: false,
+      articleFetchLoading: false,
+    };
+    const store = createMockStore(testState);
+    const component = shallowWithStore(<Feed />, store);
+    expect(component.find(ArticlesContainer)).to.have.length(1);
+  });
+});
+
+describe('<ArticlesContainer />', () => {
   it('should be a <div> component', () => {
     const testState = {
       articles: [],
@@ -41,7 +57,8 @@ describe('<Feed />', () => {
     };
     const store = createMockStore(testState);
     const component = shallowWithStore(<Feed />, store);
-    expect(component.dive().type()).to.eql('div');
+    const articlesContainer = component.dive();
+    expect(articlesContainer.type()).to.eql('div');
   });
   it('should render a <MoreButton /> component', () => {
     const testState = {
@@ -52,7 +69,8 @@ describe('<Feed />', () => {
     };
     const store = createMockStore(testState);
     const component = shallowWithStore(<Feed />, store);
-    expect(component.dive().find(MoreButton)).to.have.length(1);
+    const articlesContainer = component.dive();
+    expect(articlesContainer.find(MoreButton)).to.have.length(1);
   });
   it('should render no <Article /> or <MoreButton /> when passed hasErrored === true', () => {
     const testState = {
@@ -63,8 +81,9 @@ describe('<Feed />', () => {
     };
     const store = createMockStore(testState);
     const component = shallowWithStore(<Feed />, store);
-    expect(component.dive().find(Article)).to.have.length(0);
-    expect(component.dive().find(MoreButton)).to.have.length(0);
+    const articlesContainer = component.dive();
+    expect(articlesContainer.find(Article)).to.have.length(0);
+    expect(articlesContainer.find(MoreButton)).to.have.length(0);
   });
   it('should render no <Article /> or <MoreButton /> when passed isLoading === true', () => {
     const testState = {
@@ -75,8 +94,9 @@ describe('<Feed />', () => {
     };
     const store = createMockStore(testState);
     const component = shallowWithStore(<Feed />, store);
-    expect(component.dive().find(Article)).to.have.length(0);
-    expect(component.dive().find(MoreButton)).to.have.length(0);
+    const articlesContainer = component.dive();
+    expect(articlesContainer.find(Article)).to.have.length(0);
+    expect(articlesContainer.find(MoreButton)).to.have.length(0);
   });
   it('should render 1 <Article /> components with props.articles.length === 1', () => {
     const testState = {
@@ -101,7 +121,8 @@ describe('<Feed />', () => {
     };
     const store = createMockStore(testState);
     const component = shallowWithStore(<Feed />, store);
-    expect(component.dive().find(Article)).to.have.length(1);
+    const articlesContainer = component.dive();
+    expect(articlesContainer.find(Article)).to.have.length(1);
   });
   it('should render <Article /> components matching length of test articles structure', () => {
     const testState = {
@@ -112,7 +133,8 @@ describe('<Feed />', () => {
     };
     const store = createMockStore(testState);
     const component = shallowWithStore(<Feed />, store);
-    expect(component.dive().find(Article)).to.have.length(3);
+    const articlesContainer = component.dive();
+    expect(articlesContainer.find(Article)).to.have.length(3);
   });
   it('should render 2 <Article /> components since id: 1 is in subs', () => {
     const testState = {
@@ -123,7 +145,8 @@ describe('<Feed />', () => {
     };
     const store = createMockStore(testState);
     const component = shallowWithStore(<Feed />, store);
-    expect(component.dive().find(Article)).to.have.length(2);
+    const articlesContainer = component.dive();
+    expect(articlesContainer.find(Article)).to.have.length(2);
   });
   it('should render 0 <Article /> components since all ids are in subs', () => {
     const testState = {
@@ -134,7 +157,8 @@ describe('<Feed />', () => {
     };
     const store = createMockStore(testState);
     const component = shallowWithStore(<Feed />, store);
-    expect(component.dive().find(Article)).to.have.length(0);
+    const articlesContainer = component.dive();
+    expect(articlesContainer.find(Article)).to.have.length(0);
   });
   it('should render all <Article /> components since no ids match', () => {
     const testState = {
@@ -145,12 +169,28 @@ describe('<Feed />', () => {
     };
     const store = createMockStore(testState);
     const component = shallowWithStore(<Feed />, store);
-    expect(component.dive().find(Article)).to.have.length(3);
+    const articlesContainer = component.dive();
+    expect(articlesContainer.find(Article)).to.have.length(3);
   });
 });
 
-
 describe('<TopicsFeed />', () => {
+  it('should render a <TopicsContainer /> component', () => {
+    const testState = {
+      topics: [],
+      subs: [],
+      topicFetchError: false,
+      topicFetchLoading: false,
+      onClickAdd: () => console.log('hi'),
+      onClickRemove: () => console.log('bye'),
+    };
+    const store = createMockStore(testState);
+    const component = shallowWithStore(<TopicsFeed />, store);
+    expect(component.find(TopicsContainer)).to.have.length(1);
+  });
+});
+
+describe('<TopicsContainer />', () => {
   it('should be a <div> component', () => {
     const testState = {
       topics: [],
@@ -162,7 +202,8 @@ describe('<TopicsFeed />', () => {
     };
     const store = createMockStore(testState);
     const component = shallowWithStore(<TopicsFeed />, store);
-    expect(component.dive().type()).to.eql('div');
+    const topicsContainer = component.dive();
+    expect(topicsContainer.type()).to.eql('div');
   });
   it('should render no <Topic /> components when passed hasErrored === true', () => {
     const testState = {
@@ -175,7 +216,8 @@ describe('<TopicsFeed />', () => {
     };
     const store = createMockStore(testState);
     const component = shallowWithStore(<TopicsFeed />, store);
-    expect(component.dive().find(Topic)).to.have.length(0);
+    const topicsContainer = component.dive();
+    expect(topicsContainer.find(Topic)).to.have.length(0);
   });
   it('should render no <Topic /> components when passed isLoading === true', () => {
     const testState = {
@@ -188,7 +230,8 @@ describe('<TopicsFeed />', () => {
     };
     const store = createMockStore(testState);
     const component = shallowWithStore(<TopicsFeed />, store);
-    expect(component.dive().find(Topic)).to.have.length(0);
+    const topicsContainer = component.dive();
+    expect(topicsContainer.find(Topic)).to.have.length(0);
   });
   it('should render 1 <Topic /> component when props.topics.length === 1', () => {
     const testState = {
@@ -201,7 +244,8 @@ describe('<TopicsFeed />', () => {
     };
     const store = createMockStore(testState);
     const component = shallowWithStore(<TopicsFeed />, store);
-    expect(component.dive().find(Topic)).to.have.length(1);
+    const topicsContainer = component.dive();
+    expect(topicsContainer.find(Topic)).to.have.length(1);
   });
   it('should render as many <Topic /> components as testTopics data structure length', () => {
     const testState = {
@@ -214,7 +258,8 @@ describe('<TopicsFeed />', () => {
     };
     const store = createMockStore(testState);
     const component = shallowWithStore(<TopicsFeed />, store);
-    expect(component.dive().find(Topic)).to.have.length(3);
+    const topicsContainer = component.dive();
+    expect(topicsContainer.find(Topic)).to.have.length(3);
   });
   it('should render 1 <Topic /> with a button with a ".following-button className when topic id is not found in subs', () => {
     const testState = {
@@ -227,7 +272,8 @@ describe('<TopicsFeed />', () => {
     };
     const store = createMockStore(testState);
     const component = shallowWithStore(<TopicsFeed />, store);
-    expect(component.dive().find(Topic).dive().find('.following-button')).to.have.length(1);
+    const topicsContainer = component.dive();
+    expect(topicsContainer.find(Topic).dive().find('.following-button')).to.have.length(1);
   });
   it('should render 1 <Topic /> with a button with a ".follow-button className when topic id is found in subs', () => {
     const testState = {
@@ -240,7 +286,8 @@ describe('<TopicsFeed />', () => {
     };
     const store = createMockStore(testState);
     const component = shallowWithStore(<TopicsFeed />, store);
-    expect(component.dive().find(Topic).dive().find('.following-button')).to.have.length(0);
-    expect(component.dive().find(Topic).dive().find('.follow-button')).to.have.length(1);
+    const topicsContainer = component.dive();
+    expect(topicsContainer.find(Topic).dive().find('.following-button')).to.have.length(0);
+    expect(topicsContainer.find(Topic).dive().find('.follow-button')).to.have.length(1);
   });
 });
