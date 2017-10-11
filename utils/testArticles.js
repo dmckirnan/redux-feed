@@ -1,0 +1,43 @@
+const articles = [
+  {
+    id: 1,
+    updatedAt: '2017-04-06T01:00:01.446Z',
+    createdAt: '2017-04-06T01:00:01.446Z',
+    title: 'Test1',
+    slug: 'TestSlug',
+    summary: 'Test Summary',
+    url: 'www.google.com',
+    topics: [{ id: 3, name: 'disease' }],
+    likesCount: 0,
+    media: [{ id: 1, url: 'test.com/url' }],
+    attribution: { displayName: 'CBS' },
+  },
+  {
+    id: 2,
+    updatedAt: '2017-04-06T01:00:01.446Z',
+    createdAt: '2017-04-06T01:00:01.446Z',
+    title: 'Test2',
+    slug: 'TestSlug2',
+    summary: 'Test Summary2',
+    url: 'www.google.com/videos',
+    topics: [{ id: 7, name: 'aids' }],
+    likesCount: 0,
+    media: [{ id: 1, url: 'test.com/url' }],
+    attribution: { displayName: 'NBC' },
+  },
+  {
+    id: 3,
+    updatedAt: '2017-04-06T01:00:01.446Z',
+    createdAt: '2017-04-06T01:00:01.446Z',
+    title: 'Test2',
+    slug: 'TestSlug3',
+    summary: 'Test Summary3',
+    url: 'www.google.com/images',
+    topics: [{ id: 1, name: 'down syndrome' }],
+    likesCount: 0,
+    media: [{ id: 1, url: 'test.com/url' }],
+    attribution: { displayName: 'health' },
+  },
+];
+
+export default articles;

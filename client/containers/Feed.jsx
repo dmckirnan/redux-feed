@@ -91,15 +91,15 @@ Feed.propTypes = {
       media: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number.isRequired,
-          type: PropTypes.string.isRequired,
+          type: PropTypes.string,
           url: PropTypes.string.isRequired,
           thumbnailUrl: PropTypes.string,
-          mimeType: PropTypes.string.isRequired,
+          mimeType: PropTypes.string,
         }).isRequired,
       ).isRequired,
       attribution: PropTypes.shape({
         displayName: PropTypes.string.isRequired,
-        type: PropTypes.string.isRequired,
+        type: PropTypes.string,
       }).isRequired,
     }).isRequired,
   ).isRequired,
