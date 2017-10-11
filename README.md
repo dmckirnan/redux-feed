@@ -1,3 +1,4 @@
 # redux-feed
 
-To start the Node.js server use NPM START which will create the Bundle.js file and start the server at LOCALHOST:8000 concurrently.
+### To START -- use NPM START which will create the Bundle.js file and start the Node.js server at LOCALHOST:8000 concurrently.
+### To TEST -- use NPM TEST
